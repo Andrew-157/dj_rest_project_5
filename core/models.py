@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 import uuid
 
 from django.db import models
@@ -7,13 +8,17 @@ from django.core.validators import MinLengthValidator, MinValueValidator
 class Course(models.Model):
     id = models.UUIDField(
         primary_key=True,
-        default=uuid.uuid4(),
+        default=uuid.uuid4,
         editable=False)
     name = models.CharField(max_length=255,
                             validators=[MinLengthValidator(3)],
                             unique=True)
     published = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs) -> None:
+        self.name = self.name.lower()
+        return super().save(*args, **kwargs)
 
     def __str__(self) -> str:
         return self.title
@@ -22,7 +27,7 @@ class Course(models.Model):
 class Chapter(models.Model):
     id = models.UUIDField(
         primary_key=True,
-        default=uuid.uuid4(),
+        default=uuid.uuid4,
         editable=False)
     # Numbers of chapters are whole integers
     number = models.PositiveIntegerField(validators=[MinValueValidator(1)])
@@ -48,7 +53,7 @@ class Chapter(models.Model):
 class Section(models.Model):
     id = models.UUIDField(
         primary_key=True,
-        default=uuid.uuid4(),
+        default=uuid.uuid4,
         editable=False)
     number = models.DecimalField(max_digits=6,
                                  decimal_places=2,
