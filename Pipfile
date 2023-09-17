@@ -6,11 +6,12 @@ name = "pypi"
 [packages]
 django = "*"
 djangorestframework = "*"
-psycopg2-binary = "*"
 python-dotenv = "*"
 django-debug-toolbar = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"
+mysql = "*"
+mysqlclient = "*"
 
 [dev-packages]
 autopep8 = "*"
