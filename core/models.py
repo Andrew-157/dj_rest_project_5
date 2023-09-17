@@ -21,7 +21,7 @@ class Course(models.Model):
         return super().save(*args, **kwargs)
 
     def __str__(self) -> str:
-        return self.title
+        return self.name
 
 
 class Chapter(models.Model):
