@@ -12,6 +12,7 @@ djoser = "*"
 djangorestframework-simplejwt = "*"
 mysql = "*"
 mysqlclient = "*"
+drf-nested-routers = "*"
 
 [dev-packages]
 autopep8 = "*"
