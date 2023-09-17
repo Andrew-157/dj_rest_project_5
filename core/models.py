@@ -1,5 +1,6 @@
 from collections.abc import Iterable
 import uuid
+from decimal import Decimal
 
 from django.db import models
 from django.core.validators import MinLengthValidator, MinValueValidator
@@ -56,8 +57,8 @@ class Section(models.Model):
         default=uuid.uuid4,
         editable=False)
     number = models.DecimalField(max_digits=6,
-                                 decimal_places=2,
-                                 validators=[MinValueValidator(1.1)])
+                                 decimal_places=1,
+                                 validators=[MinValueValidator(1.0)])
     title = models.CharField(max_length=255,
                              validators=[MinLengthValidator(3)])
     chapter = models.ForeignKey('core.Chapter',

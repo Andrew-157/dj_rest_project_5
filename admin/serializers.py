@@ -17,3 +17,12 @@ class ChapterSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'id', 'number', 'title',
                   'introduction', 'published', 'updated',
                   'course']
+
+
+class SectionSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Section
+        fields = ['url', 'id', 'number', 'title',
+                  'content', 'published', 'updated',
+                   'chapter' ]
