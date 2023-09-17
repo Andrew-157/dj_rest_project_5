@@ -17,5 +17,7 @@ Including another URLconf
 from django.urls import include, path
 
 urlpatterns = [
-    path('__debug__/', include('debug_toolbar.urls'))
+    path('__debug__/', include('debug_toolbar.urls')),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
 ]
